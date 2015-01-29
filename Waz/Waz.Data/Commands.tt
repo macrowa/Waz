@@ -1,0 +1,45 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ assembly name="System.Xml.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+
+<#
+	string sql_path = @"E:\Work\Other\GitHub\Waz\Waz\Waz.Data\Commands.sql";
+    string regex_text = @"--\[START\]\s*?--(?<Name>.*)\s(?<Command>(.|\s)*?)\s--\[END\]";
+    string data = System.IO.File.ReadAllText(sql_path);
+    MatchCollection mc=Regex.Matches(data, regex_text);
+    Dictionary<string, string> result = new Dictionary<string, string>();
+    foreach (Match m in mc)
+    {
+        if (m.Groups["Name"] != null && m.Groups["Command"]!=null)
+        {
+            result.Add(m.Groups["Name"].Value.Trim(), m.Groups["Command"].Value.Trim().Replace("\r\n"," "));
+        }
+    }
+#>
+using System;
+
+namespace Waz.Data
+{
+	public static class Commands
+	{
+		<#foreach(var item in result){#>
+
+			public static string <#=item.Key#>
+			{
+				get
+				{
+					return "<#=item.Value#>";
+				}
+			}
+
+		<#}#>
+
+	}
+}

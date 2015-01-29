@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Waz.Core;
 using Waz.Data;
+using System.Web.Security;
 
 namespace Waz.Web.Controllers
 {
@@ -13,15 +14,22 @@ namespace Waz.Web.Controllers
 
         public ActionResult SignIn()
         {
-            
+
             return View();
         }
 
         [HttpPost]
-        public ActionResult SignIn(string name,string password)
+        public ActionResult SignIn(string name, string password)
         {
-            
-            return View();
+            T_UserInfo userinfo = T_UserInfo.QueryByNameAndPassword(name, password);
+            if (userinfo == null)
+            {
+                return Redirect(FormsAuthentication.GetRedirectUrl("", false));
+            }
+            else
+            {
+                return Redirect(FormsAuthentication.GetRedirectUrl(userinfo.Name, false));
+            }
         }
 
         public ActionResult SignOut()

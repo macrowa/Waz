@@ -137,6 +137,19 @@
       <Project>{DBF77984-154C-4F45-9D8E-669353132297}</Project>
       <Name>Waz.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Waz.Data\Waz.Data.csproj">
+      <Project>{4268C63A-B65B-4673-9099-50EDA79D734C}</Project>
+      <Name>Waz.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\SignIn.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

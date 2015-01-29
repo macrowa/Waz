@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "SignIn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>
+    SignIn</h2>
+@using (Html.BeginForm("SignIn", "Account", "POST"))
+{
+    @Html.TextBox("name");
+    @Html.Password("name");
+    <input type="submit" value="登录" />
+}

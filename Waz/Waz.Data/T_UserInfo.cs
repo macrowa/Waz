@@ -14,7 +14,7 @@ namespace Waz.Data
     {
         private static IDbConnection GetConnection()
         {
-            return new SqlConnection();
+            return new SqlConnection("Data Source =192.168.1.160;Initial Catalog = MWaDB;UID=sa;PWD=1234567890");
         }
 
         public static T_UserInfo QueryByNameAndPassword(string name, string password)

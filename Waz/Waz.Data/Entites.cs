@@ -7,7 +7,7 @@ namespace Waz.Data
 	
 	[Table("T_Comment")]
 
-	public partial class T_Comment
+	public class T_Comment
 	{
 				
 		
@@ -75,7 +75,7 @@ namespace Waz.Data
 	
 	[Table("T_Content")]
 
-	public partial class T_Content
+	public class T_Content
 	{
 				
 		
@@ -153,7 +153,7 @@ namespace Waz.Data
 	
 	[Table("T_ContentMeta")]
 
-	public partial class T_ContentMeta
+	public class T_ContentMeta
 	{
 				
 		
@@ -201,7 +201,7 @@ namespace Waz.Data
 	
 	[Table("T_Permission")]
 
-	public partial class T_Permission
+	public class T_Permission
 	{
 				
 		
@@ -239,7 +239,7 @@ namespace Waz.Data
 	
 	[Table("T_Role")]
 
-	public partial class T_Role
+	public class T_Role
 	{
 				
 		
@@ -256,7 +256,7 @@ namespace Waz.Data
 		/// <summary>
 		/// 
 		/// </summary>
-		public string Role
+		public string Name
 		{
 			
 			get;set;
@@ -277,7 +277,7 @@ namespace Waz.Data
 	
 	[Table("T_Role_Permission")]
 
-	public partial class T_Role_Permission
+	public class T_Role_Permission
 	{
 				
 		
@@ -315,7 +315,7 @@ namespace Waz.Data
 	
 	[Table("T_Role_UserInfo")]
 
-	public partial class T_Role_UserInfo
+	public class T_Role_UserInfo
 	{
 				
 		
@@ -353,7 +353,7 @@ namespace Waz.Data
 	
 	[Table("T_UserInfo")]
 
-	public partial class T_UserInfo
+	public class T_UserInfo
 	{
 				
 		
@@ -421,7 +421,7 @@ namespace Waz.Data
 	
 	[Table("T_UserInfoMeta")]
 
-	public partial class T_UserInfoMeta
+	public class T_UserInfoMeta
 	{
 				
 		

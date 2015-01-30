@@ -45,7 +45,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Commands.tt</DependentUpon>
     </Compile>
-    <Compile Include="T_UserInfo.cs" />
+    <Compile Include="WazDb.cs" />
     <Compile Include="Entites.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

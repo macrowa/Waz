@@ -21,20 +21,22 @@ namespace Waz.Web.Controllers
         [HttpPost]
         public ActionResult SignIn(string name, string password)
         {
-            T_UserInfo userinfo = T_UserInfo.QueryByNameAndPassword(name, password);
+            T_UserInfo userinfo = WazDb.QueryUserInfoByNameAndPassword(name, password);
             if (userinfo == null)
             {
-                return Redirect(FormsAuthentication.GetRedirectUrl("", false));
+                return View();
             }
             else
             {
+                AuthManager.SignIn(HttpContext, userinfo, 60*24*90);
                 return Redirect(FormsAuthentication.GetRedirectUrl(userinfo.Name, false));
             }
         }
 
         public ActionResult SignOut()
         {
-            return View();
+            AuthManager.SignOut();
+            return RedirectToAction("SignIn");
         }
 
         public ActionResult SignUp()

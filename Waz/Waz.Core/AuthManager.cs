@@ -4,18 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Web.Security;
 using System.Web;
+using Waz.Data;
+using Newtonsoft.Json;
 
 namespace Waz.Core
 {
     public class AuthManager
     {
-        public static bool SignIn(HttpContext context,long id,string name, int timeOut)
+        public static bool SignIn(HttpContextBase context,T_UserInfo userinfo, int timeOut)
         {
             if (context == null)
             {
                 throw new ArgumentNullException("Context");
             }
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(userinfo.Name))
             {
                 throw new ArgumentNullException("Name");
             }
@@ -25,9 +27,9 @@ namespace Waz.Core
             }
             DateTime now = DateTime.Now;
 
-            string userData = name;
+            string userData = JsonConvert.SerializeObject(userinfo,Formatting.Indented);
 
-            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(2, name, now, now.AddMinutes(timeOut), true, userData);
+            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(2, userinfo.Name, now, now.AddMinutes(timeOut), true, userData);
             string str_ticket = FormsAuthentication.Encrypt(ticket);
             HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, str_ticket);
             cookie.HttpOnly = false;
@@ -41,7 +43,7 @@ namespace Waz.Core
             return true;
         }
 
-        public static bool Authenticate(HttpContext context)
+        public static bool Authenticate(HttpContextBase context)
         {
             if (context == null)
             {
@@ -56,16 +58,8 @@ namespace Waz.Core
 
             FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(cookie.Value);
 
-            if (ticket != null && !string.IsNullOrEmpty(ticket.UserData))
-            {
-                string userData = ticket.UserData;
-                context.User = new WazPrincipal(ticket);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            context.User = new WazPrincipal(ticket);
+            return true;
         }
 
         public static bool SignOut()

@@ -24,7 +24,7 @@ namespace <#=Config.NameSpace#>
 
 	[Table("<#=tableInfo.TableName#>")]
 
-	public partial class <#=Config.ClassNamingRules(tableInfo.TableName)#>
+	public class <#=Config.ClassNamingRules(tableInfo.TableName)#>
 	{
 		<#Config.GenerateFields=false;#>
 		<#if(Config.GenerateFields){#>

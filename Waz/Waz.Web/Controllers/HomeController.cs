@@ -8,7 +8,6 @@ using Waz.Core;
 
 namespace Waz.Web.Controllers
 {
-    [WazAuth(Permission="a")]
     public class HomeController : Controller
     {
         public ActionResult Index()

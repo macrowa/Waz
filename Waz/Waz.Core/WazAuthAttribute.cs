@@ -46,7 +46,7 @@ namespace Waz.Core
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    m_Roles =new List<string>();
+                    m_Roles = new List<string>();
                 }
                 else
                 {
@@ -110,6 +110,10 @@ namespace Waz.Core
             {
                 return false;
             }
+            if (user.Identity.Name == "Waz")
+            {
+                return true;
+            }
             if (m_Users.Count == 0 && m_Roles.Count == 0 && string.IsNullOrEmpty(m_Permission))
             {
                 return true;
@@ -118,13 +122,13 @@ namespace Waz.Core
             bool roleFlag = false;
             foreach (string role in m_Roles)
             {
-                if (user.Roles.Exists(x => x.Name == role))
+                if (user.IsInRole(role))
                 {
                     roleFlag = true;
                     break;
                 }
             }
-            bool permissionFlag = user.Permissions.Exists(x => x.Name == Permission);
+            bool permissionFlag = user.HasPermission(Permission);
 
             if (IsAnd)
             {

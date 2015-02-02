@@ -13,7 +13,7 @@ namespace Waz.Data
     {
         private static IDbConnection GetConnection()
         {
-            return new SqlCeConnection("Data Source=.\\App_Data\\WazDb.sdf");
+            return new SqlCeConnection("Data Source=./App_Data/WazDb.sdf");
         }
 
         public static T_UserInfo QueryUserInfoByNameAndPassword(string name, string password)

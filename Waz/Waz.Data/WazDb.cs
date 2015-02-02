@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 using Dapper;
-using Dapper.Contrib.Extensions;
 
 
 namespace Waz.Data
@@ -14,7 +13,7 @@ namespace Waz.Data
     {
         private static IDbConnection GetConnection()
         {
-            return new SqlConnection("Data Source =192.168.1.160;Initial Catalog = MWaDB;UID=sa;PWD=1234567890");
+            return new SqlCeConnection("Data Source=.\\App_Data\\WazDb.sdf");
         }
 
         public static T_UserInfo QueryUserInfoByNameAndPassword(string name, string password)

@@ -1,11 +1,9 @@
 ﻿using System;
-using Dapper.Contrib.Extensions;
 
 namespace Waz.Data
 {
 
 	
-	[Table("T_Comment")]
 
 	public class T_Comment
 	{
@@ -73,7 +71,6 @@ namespace Waz.Data
 		
 	}
 	
-	[Table("T_Content")]
 
 	public class T_Content
 	{
@@ -151,7 +148,6 @@ namespace Waz.Data
 		
 	}
 	
-	[Table("T_ContentMeta")]
 
 	public class T_ContentMeta
 	{
@@ -199,7 +195,6 @@ namespace Waz.Data
 		
 	}
 	
-	[Table("T_Permission")]
 
 	public class T_Permission
 	{
@@ -237,7 +232,6 @@ namespace Waz.Data
 		
 	}
 	
-	[Table("T_Role")]
 
 	public class T_Role
 	{
@@ -275,7 +269,6 @@ namespace Waz.Data
 		
 	}
 	
-	[Table("T_Role_Permission")]
 
 	public class T_Role_Permission
 	{
@@ -313,7 +306,6 @@ namespace Waz.Data
 		
 	}
 	
-	[Table("T_Role_UserInfo")]
 
 	public class T_Role_UserInfo
 	{
@@ -351,7 +343,6 @@ namespace Waz.Data
 		
 	}
 	
-	[Table("T_UserInfo")]
 
 	public class T_UserInfo
 	{
@@ -419,7 +410,6 @@ namespace Waz.Data
 		
 	}
 	
-	[Table("T_UserInfoMeta")]
 
 	public class T_UserInfoMeta
 	{

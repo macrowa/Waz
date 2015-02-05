@@ -13,8 +13,7 @@ namespace Waz.Web.Controllers
     {
 
         public ActionResult SignIn()
-        {
-
+        {    
             return View();
         }
 

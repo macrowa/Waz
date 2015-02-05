@@ -48,16 +48,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthManager.cs" />
-    <Compile Include="Extension\Bootstrapper.cs" />
-    <Compile Include="Extension\IPlugin.cs" />
-    <Compile Include="Extension\IPluginLoader.cs" />
+    <Compile Include="Extension\ExtensionDescriptor.cs" />
+    <Compile Include="Extension\ExtensionManager.cs" />
+    <Compile Include="Extension\IExtension.cs" />
+    <Compile Include="Extension\ExtensionsLoader.cs" />
+    <Compile Include="Extension\IModule.cs" />
     <Compile Include="Extension\Mvc\PluginControllerFactory.cs" />
-    <Compile Include="Extension\PluginDescriptor.cs" />
-    <Compile Include="Extension\PluginFileParser.cs" />
-    <Compile Include="Extension\PluginLoader.cs" />
-    <Compile Include="Extension\PluginManager.cs" />
     <Compile Include="Extension\Mvc\PluginRazorViewEngine.cs" />
-    <Compile Include="Extension\PluginWatcher.cs" />
     <Compile Include="Extension\Mvc\ThemeableRazorViewEngine.cs" />
     <Compile Include="Extension\Mvc\ThemeableVirtualPathProviderViewEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

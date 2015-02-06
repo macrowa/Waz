@@ -39,6 +39,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
     <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,15 +49,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthManager.cs" />
+    <Compile Include="Extension\Bootstrapper.cs" />
     <Compile Include="Extension\ExtensionDescriptor.cs" />
-    <Compile Include="Extension\ExtensionManager.cs" />
+    <Compile Include="Extension\ExtensionInfo.cs" />
     <Compile Include="Extension\IExtension.cs" />
+    <Compile Include="Extension\ExtensionManager.cs" />
     <Compile Include="Extension\ExtensionsLoader.cs" />
-    <Compile Include="Extension\IModule.cs" />
-    <Compile Include="Extension\Mvc\PluginControllerFactory.cs" />
+    <Compile Include="Extension\ExtensionUtils.cs" />
+    <Compile Include="Extension\Mvc\ExtensionControllerFactory.cs" />
     <Compile Include="Extension\Mvc\PluginRazorViewEngine.cs" />
-    <Compile Include="Extension\Mvc\ThemeableRazorViewEngine.cs" />
-    <Compile Include="Extension\Mvc\ThemeableVirtualPathProviderViewEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WazAuthAttribute.cs" />
     <Compile Include="WazController.cs" />
@@ -68,6 +69,7 @@
       <Name>Waz.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

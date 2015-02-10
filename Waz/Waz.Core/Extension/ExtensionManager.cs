@@ -5,45 +5,15 @@ using System.Text;
 
 namespace Waz.Core.Extension
 {
-    public static class ExtensionManager
+    public class ExtensionManager
     {
-        private static IEnumerable<ExtensionDescriptor> _extensionDescriptors;
+        private IEnumerable<ExtensionDescriptor> _extensionDescriptor;
 
-        public static IEnumerable<ExtensionDescriptor> ExtensionDescriptors
+
+
+        public ExtensionManager()
         {
-            get
-            {
-                return _extensionDescriptors;
-            }
+            //_extensionDescriptor = ExtensionsLoader.Load();
         }
-
-        public static void Initialize()
-        {
-            _extensionDescriptors = ExtensionsLoader.Load();
-            Load();
-        }
-
-        public static ExtensionDescriptor GetExtensionDescriptor(string name)
-        { 
-            return _extensionDescriptors.SingleOrDefault(x => x.ExtensionInfo.Name == name);
-        }
-
-        public static void Load()
-        {
-            foreach (ExtensionDescriptor extensionDescriptor in _extensionDescriptors)
-            {
-                extensionDescriptor.Load();
-            }
-        }
-
-        public static void Load(string name)
-        {
-            ExtensionDescriptor extensionDescriptor = _extensionDescriptors.SingleOrDefault(x => x.ExtensionInfo.Name == name);
-            if (extensionDescriptor != null)
-            {
-                extensionDescriptor.Load();
-            }
-        }
-
     }
 }

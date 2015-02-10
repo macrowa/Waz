@@ -7,14 +7,37 @@ using Newtonsoft.Json;
 
 namespace Waz.Core.Extension
 {
-    public static class ExtensionsLoader
+    public class ExtensionsLoader
     {
+        private string _modulePath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, @"\Modules\");
 
-        public static IEnumerable<ExtensionDescriptor> Load()
+        private string _shadowCopyPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, @"\App_Data\Modules\");
+
+        public DirectoryInfo ModuleFolder;
+
+        public DirectoryInfo ShadowCopyFolder;
+
+
+
+        public ExtensionsLoader()
+        {
+            if (!Directory.Exists(_modulePath))
+            {
+                Directory.CreateDirectory(_modulePath);
+            }
+            if (!Directory.Exists(_shadowCopyPath))
+            {
+                Directory.CreateDirectory(_shadowCopyPath);
+            }
+            ModuleFolder = new DirectoryInfo(_modulePath);
+            ShadowCopyFolder = new DirectoryInfo(_shadowCopyPath);
+        }
+
+        public IEnumerable<ExtensionDescriptor> Load()
         {
             List<ExtensionDescriptor> extensionDescriptors = new List<ExtensionDescriptor>();
 
-            DirectoryInfo[] folders = ExtensionUtils.ExtensionsFolder.GetDirectories();
+            DirectoryInfo[] folders = ModuleFolder.GetDirectories();
 
             foreach (DirectoryInfo folder in folders)
             {
@@ -26,7 +49,26 @@ namespace Waz.Core.Extension
                     extensionDescriptors.Add(new ExtensionDescriptor(extensionInfo));
                 }
             }
+
+
+
             return extensionDescriptors;
+        }
+
+        private void ShadowCopy(List<ExtensionDescriptor> extensionDescriptors)
+        { 
+            foreach(FileInfo file in ShadowCopyFolder.GetFiles("*.dll",SearchOption.AllDirectories)
+            {
+                try
+                {
+                file.Delete();
+                }catch
+                {
+                
+                }
+            }
+
+
         }
 
     }

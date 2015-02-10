@@ -1,6 +1,6 @@
 ﻿{
 	Name:'HelloWorld',
-	FriendlyName:'hello world!',
+	FriendlyName:'hello world',
 	Author:'m',
 	Version:'0.0.1'
 }
